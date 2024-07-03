@@ -7,6 +7,7 @@ import com.sagar.baseproject.service.TicketTopicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +43,7 @@ public class TicketTopicController {
                 .build());
     }
 
-  //  @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     @GetMapping("/getTopicById/{id}")
     public ResponseEntity<GlobalApiResponse> getTopicById(@PathVariable int id) {
         return ResponseEntity.ok(GlobalApiResponse
